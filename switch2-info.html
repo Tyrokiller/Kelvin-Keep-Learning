@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nintendo Switch 2: 事实与展望</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: auto;
+        }
+        .card {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.7), rgba(10, 10, 10, 0.7));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+        }
+        .card-large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+        .card-wide {
+            grid-column: span 2;
+        }
+        .highlight-text {
+            font-size: 5rem;
+            font-weight: bold;
+            line-height: 1;
+            background: linear-gradient(90deg, #ff2d55, #ff5e3a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer a {
+            color: #ff5e3a;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="text-center py-16 px-4" style="background-image: url(Imgs/switch_main.jpg); background-size: cover; background-position: center;">
+        <h1 class="text-6xl font-extrabold mb-4 bg-gradient-to-r from-red-500 to-red-700 text-transparent bg-clip-text">
+            Nintendo Switch 2
+        </h1>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            2025年6月5日全球发售 | 售价449.99美元 | 7.9英寸120Hz屏幕 | 4K输出 | 全新社交体验
+        </p>
+    </header>
+
+    <main class="bento-grid">
+        <div class="card card-large flex flex-col justify-center items-center text-center" style="background-image: url(Imgs/switch_card.jpg); background-size: cover; background-position: center;">
+            <h2 class="section-title">官方发布</h2>
+            <p class="highlight-text">2025.6.5</p>
+            <p class="text-xl mt-4 text-gray-300">全球同步发售日期</p>
+            <p class="mt-6 text-lg max-w-xl">任天堂已于2025年4月2日正式公布Switch 2的完整规格和发售信息。新主机将于2025年6月5日全球同步发售，售价449.99美元。</p>
+            <a href="https://www.nintendo.com/us/gaming-systems/switch-2/" target="_blank" rel="noopener noreferrer" class="mt-6 inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">
+                <i class="fas fa-link mr-2"></i>访问任天堂Switch 2官网
+            </a>
+        </div>
+
+        <div class="card">
+            <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-microchip text-blue-500 mr-3"></i>硬件规格</h3>
+            <ul class="text-gray-300 space-y-2">
+                <li><i class="fas fa-tv text-red-400 mr-2"></i> 7.9英寸LCD屏幕，1080p/120Hz，支持HDR10</li>
+                <li><i class="fas fa-desktop text-red-400 mr-2"></i> 底座支持4K/60Hz输出</li>
+                <li><i class="fas fa-memory text-red-400 mr-2"></i> 256GB存储 + 12GB内存</li>
+                <li><i class="fas fa-battery-full text-red-400 mr-2"></i> 5,220mAh电池，续航2-6.5小时</li>
+                <li><i class="fas fa-wifi text-red-400 mr-2"></i> 支持Wi-Fi 6E和蓝牙</li>
+            </ul>
+        </div>
+
+        <div class="card">
+             <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-comments text-green-400 mr-3"></i>GameChat功能</h3>
+            <p class="text-gray-300 mb-3">全新社交功能，让游戏体验更具互动性：</p>
+            <ul class="text-gray-300 space-y-1">
+                <li><i class="fas fa-users text-red-400 mr-2"></i> 最多12人同时语音聊天</li>
+                <li><i class="fas fa-share-alt text-red-400 mr-2"></i> 最多4人可同时共享游戏画面</li>
+                <li><i class="fas fa-video text-red-400 mr-2"></i> 支持USB-C摄像头进行视频聊天</li>
+                <li><i class="fas fa-calendar-alt text-red-400 mr-2"></i> 免费使用至2026年3月31日</li>
+            </ul>
+        </div>
+
+        <div class="card card-wide">
+            <h2 class="section-title mb-6">创新功能</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-share-alt text-4xl text-red-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">GameShare</h4>
+                    <p class="text-sm text-gray-300">在线共享游戏，让朋友无需购买即可一起游玩。目前支持6款游戏，未来将扩展更多。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-arrows-alt-h text-4xl text-red-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">向后兼容</h4>
+                    <p class="text-sm text-gray-300">完全支持原Switch游戏，GameCube游戏通过Nintendo Switch Online独占提供。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-mouse-pointer text-4xl text-red-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">Joy-Con 2</h4>
+                    <p class="text-sm text-gray-300">全新控制器支持鼠标功能，右侧增加C按钮快速启动GameChat，解决了漂移问题。</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-sd-card text-4xl text-red-400 mb-3"></i>
+                    <h4 class="font-semibold mb-1">Game-Key Cards</h4>
+                    <p class="text-sm text-gray-300">新型实体游戏卡带，需从服务器下载数据才能游玩，增强了数字版权管理。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-wide">
+            <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-server text-purple-400 mr-3"></i>在线服务与MCP Server</h3>
+            <p class="text-gray-300 mb-4">Switch 2带来了全面升级的在线服务基础设施：</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 text-red-400">网络架构升级</h4>
+                    <ul class="text-gray-300 space-y-1">
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> 支持IPv6（原Switch不支持）</li>
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> 更快的Wi-Fi 6E和5G连接</li>
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> 降低多人游戏延迟</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-2 text-red-400">服务器基础设施</h4>
+                    <ul class="text-gray-300 space-y-1">
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> NPLN系统替换老旧NEX多人服务器</li>
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> 增强的云游戏能力</li>
+                        <li><i class="fas fa-check-circle text-green-400 mr-2"></i> 更快的eShop加载速度</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 class="text-2xl font-bold mb-4 flex items-center"><i class="fas fa-gamepad text-yellow-400 mr-3"></i>首发游戏</h3>
+            <p class="text-gray-300 mb-3">Mario Kart World成为最畅销首发游戏，发售4天内全球销量超过246万份。</p>
+            <p class="text-gray-300">更多第三方游戏正在开发中，任天堂承诺每月将有重磅游戏发布。</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>由 @老嘲闲话 基于公开信息和权威报道整理呈现。</p>
+        <p>信息来源: <a href="https://www.nintendo.com/us/gaming-systems/switch-2/" target="_blank">Nintendo官网</a>, <a href="https://www.nintendo.com/us/gaming-systems/switch-2/features/gamechat/" target="_blank">GameChat官方介绍</a>, <a href="https://en.wikipedia.org/wiki/Nintendo_Switch_2" target="_blank">Wikipedia</a>. 更新日期: 2025年7月29日</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, i) => {
+                // 使用原生JavaScript实现简单的淡入和上移动画
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 500ms ease, transform 500ms ease`;
+                
+                // 设置延迟显示
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, i * 100);
+            });
+        });
+    </script>
+</body>
+</html>
