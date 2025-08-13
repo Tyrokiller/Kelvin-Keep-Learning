@@ -1,11 +1,561 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的个人网站</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您的名字 - 个人网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 导航栏 */
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            margin-top: 80px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 80px 0;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* 首页 */
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 120px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+        }
+
+        /* 关于我 */
+        .about {
+            background: white;
+            color: #333;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* 项目展示 */
+        .projects {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .projects h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* 联系方式 */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <h1>欢迎访问我的网站</h1>
-    <p>这是我的第一个GitHub Pages网站！</p>
+    <!-- 导航栏 -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">您的名字</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('home')">首页</a></li>
+                <li><a href="#" onclick="showSection('about')">关于我</a></li>
+                <li><a href="#" onclick="showSection('projects')">项目</a></li>
+                <li><a href="#" onclick="showSection('contact')">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h1>欢迎来到我的世界</h1>
+                    <p>我是一名热爱技术的开发者，专注于创造有意义的数字体验</p>
+                    <a href="#" class="btn" onclick="showSection('about')">了解更多</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我 -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>关于我</h2>
+                        <p>👋 你好！我是一名充满激情的开发者，拥有多年的编程经验。我喜欢将创意转化为现实，通过代码解决实际问题。</p>
+                        <p>🚀 我专注于现代Web技术，包括前端和后端开发。我相信技术应该服务于人，让生活变得更美好。</p>
+                        <p>💡 在空闲时间，我喜欢学习新技术、参与开源项目，并与技术社区分享知识。</p>
+                        <div class="skills">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://via.placeholder.com/300x300/667eea/ffffff?text=Your+Photo" alt="个人照片" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目展示 -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2>我的项目</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>🤖 AI聊天助手</h3>
+                        <p>基于最新AI技术开发的智能聊天助手，能够理解自然语言并提供有用的回答。使用React和Node.js构建。</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">查看演示</a>
+                            <a href="#" target="_blank">源代码</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>📊 数据可视化平台</h3>
+                        <p>一个强大的数据分析和可视化平台，支持多种图表类型和实时数据更新。使用Vue.js和Python开发。</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">查看演示</a>
+                            <a href="#" target="_blank">源代码</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>🛍️ 电商管理系统</h3>
+                        <p>功能完整的电商后台管理系统，包括商品管理、订单处理、用户管理等功能。采用微服务架构。</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">查看演示</a>
+                            <a href="#" target="_blank">源代码</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <h3>🎵 音乐播放器</h3>
+                        <p>现代化的Web音乐播放器，支持播放列表管理、歌词显示、音效调节等功能。纯前端实现。</p>
+                        <div class="project-links">
+                            <a href="#" target="_blank">查看演示</a>
+                            <a href="#" target="_blank">源代码</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系方式 -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2>联系我</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>🌐 让我们连接</h3>
+                        <p style="margin-bottom: 2rem;">如果您对我的项目感兴趣，或者想要合作，请随时联系我！</p>
+                        
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>your.email@example.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>💼</span>
+                            <span>github.com/yourusername</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>🐦</span>
+                            <span>@yourtwitterhandle</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>💬</span>
+                            <span>WeChat: yourwechatid</span>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>📝 发送消息</h3>
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">消息</label>
+                            <textarea id="message" name="message" placeholder="请输入您的消息..." required></textarea>
+                        </div>
+                        <button type="button" class="btn" onclick="sendMessage()">发送消息</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // 导航功能
+        function showSection(sectionName) {
+            // 隐藏所有section
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 显示目标section
+            const targetSection = document.getElementById(sectionName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            // 滚动到顶部
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // 滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // 发送消息功能
+        function sendMessage() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && message) {
+                alert('感谢您的消息！我会尽快回复您。');
+                // 清空表单
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                alert('请填写完整信息。');
+            }
+        }
+
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(function() {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // 键盘导航
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                showSection('home');
+            }
+        });
+    </script>
 </body>
 </html>
